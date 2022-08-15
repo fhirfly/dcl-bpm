@@ -5,8 +5,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
+    "watch": "npm-watch",
     "docs": "api-documenter markdown --output-folder docs/ --input-folder temp/",
-    "build": "rm -rf temp/ && rollup -c && npm run docs",
+    "build": "rd /s /q dist/ && rollup -c && npm run docs",
     "link": "npm link && rollup --watch -c ",
     "test": "jest --detectOpenHandles --silent=false --verbose --colors --runInBand"
   },
@@ -20,6 +21,14 @@
     "sdk",
     "library"
   ],
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,jsx"
+    }
+  },
   "author": "-",
   "license": "Apache-2.0",
   "repository": {
@@ -36,7 +45,7 @@
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.1",
     "@types/jest": "^27.4.1",
-    "decentraland-ecs": "latest",
+    "decentraland-ecs": "^6.11.4",
     "jest": "^27.5.1",
     "rollup": "^2.70.1",
     "rollup-plugin-api-extractor": "^0.2.5",
@@ -47,5 +56,8 @@
     "node": ">=16.0.0",
     "npm": ">=8.0.0",
     "yarn": "please use npm"
+  },
+  "dependencies": {
+    "fhirclient": "^2.5.0"
   }
 }
